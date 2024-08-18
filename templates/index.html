@@ -6,11 +6,11 @@
 -->
 <html>
 	<head>
-		<title>Hyperspace by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+			<title>Hyperspace by HTML5 UP</title>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+			<link rel="stylesheet" href="main.css" />
+			<noscript><link rel="stylesheet" href="noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -85,36 +85,61 @@
 
 				<!-- Two -->
 					<section id="two" class="wrapper style3 fade-up">
-    				<div class="inner">
-        			<h2>What we do</h2>
-        			<p>Get the latest information on stocks and cryptocurrencies.</p>
-        			<div class="features">
+						<div class="inner">
+							<h2>What we do</h2>
+							<p>Get the latest information on stocks and cryptocurrencies.</p>
+							<div class="features">
 
-            		<!-- Loop through stocks -->
-            		{% for stock in stockInfo %}
-            		<section>
-                		<span class="icon solid major fa-chart-line"></span>
-                		<h3>{{ stock.name }}</h3>
-                		<p>Price: {{ stock.price }}<br>Change: {{ stock.change }}</p>
-            		</section>
-            		{% endfor %}
+								<!-- Loop through stocks -->
+								{% if stockInfo %}
+									{% for stock in stockInfo %}
+									<section>
+										<span class="icon solid major fa-chart-line"></span>
+										<h3>{{ stock.stockId }}</h3>
+										<p>
+											Ticker: {{ stock.ticker }}<br>
+											Price: {{ stock.currentPrice }}<br>
+											Open Price: {{ stock.openPrice }}<br>
+											Close Price: {{ stock.closePrice }}<br>
+											Change: {{ stock.change }}<br>
+											Market Cap: {{ stock.mCap }}<br>
+											50 Day Average: {{ stock.fiftyDayAverage }}
+										</p>
+									</section>
+									{% endfor %}
+								{% else %}
+									<p>No stock data available.</p>
+								{% endif %}
 
-            		<!-- Loop through cryptocurrencies -->
-            		{% for crypto in cryptoInfo %}
-            		<section>
-                		<span class="icon solid major fa-coins"></span>
-                		<h3>{{ crypto.name }}</h3>
-                		<p>Price: {{ crypto.price }}<br>Change: {{ crypto.change }}</p>
-            		</section>
-            		{% endfor %}
+								<!-- Loop through cryptocurrencies -->
+								{% if cryptoInfo %}
+									{% for crypto in cryptoInfo %}
+									<section>
+										<span class="icon solid major fa-coins"></span>
+										<h3>{{ crypto.coinId }}</h3>
+										<p>
+											Symbol: {{ crypto.symbol }}<br>
+											Current Price: {{ crypto.currentPrice }}<br>
+											Low (24h): {{ crypto.low24 }}<br>
+											High (24h): {{ crypto.high24 }}<br>
+											Change (24h): {{ crypto.fluct }}<br>
+											Circulating Supply: {{ crypto.circSupp }}<br>
+											Market Cap: {{ crypto.mCap }}<br>
+											Last Updated: {{ crypto.updateDate }}<br>
+											Market Cap Rank: {{ crypto.marketCapRank }}
+										</p>
+									</section>
+									{% endfor %}
+								{% else %}
+									<p>No crypto data available.</p>
+								{% endif %}
 
-        			</div>
-        				<ul class="actions">
-            				<li><a href="generic.html" class="button">Learn more</a></li>
-        				</ul>
-    				</div>
-				</section>
-
+							</div>
+							<ul class="actions">
+								<li><a href="generic.html" class="button">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
 
 				<!-- Three -->
 					<section id="three" class="wrapper style1 fade-up">
