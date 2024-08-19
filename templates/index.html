@@ -93,24 +93,28 @@
 							<!-- Loop through stocks -->
 							{% if stockInfo %}
 								{% for stock in stockInfo %}
-									
-									<section>
-										<span class="icon solid major fa-chart-line"></span>
-										<h3>{{ stock.stockId }}</h3>
-										<p>
-											Ticker: {{ stock.ticker }}<br>
-											Price: {{ stock.currentPrice }}<br>
-											Open Price: {{ stock.openPrice }}<br>
-											Close Price: {{ stock.closePrice }}<br>
-											Change: {{ stock.change }}<br>
-											Market Cap: {{ stock.mCap }}<br>
-											50 Day Average: {{ stock.fiftyDayAverage }}
-										</p>
-									</section>
+								<section>
+									<span class=""icon solid major fa-coins"></span>
+										{% for info in stock %}
+										<section>
+											<h3>{{ info.ticker }}</h3>
+												<p>
+													Stock ID: {{ info.stockId }}<br>
+            										Current Price: ${{ info.currentPrice }}<br>
+													Open Price: ${{ info.openPrice }}<br>
+													Close Price: ${{ info.closePrice }}<br>
+													Change: {{ info.change }}<br>
+													Market Cap: {{ info.mCap }}<br>
+													50-Day Average: ${{ info.fiftyDayAverage }}<br>
+												</p>
+										</section>
+										{% endfor %}
+								</section>
 								{% endfor %}
 							{% else %}
-								<p>No stock data available.</p>
+							<p>No stock data.</p>
 							{% endif %}
+
 
 							<!-- Loop through cryptocurrencies -->
 							{% if cryptoInfo %}

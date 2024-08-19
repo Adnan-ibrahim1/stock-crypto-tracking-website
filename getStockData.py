@@ -23,5 +23,6 @@ def collectStockData(data):
         
         stockObject= stockUnit(stockId, ticker, currentPrice, openPrice, closePrice, change, mCap, fiftyDayAverage)
         stockList.append(stockObject)
+
         
     return stockList
