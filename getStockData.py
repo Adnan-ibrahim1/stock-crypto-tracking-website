@@ -4,7 +4,7 @@ from storeUnit import stockUnit
 def startCollectStock():
     stockData= Screener()
     collectedData= stockData.get_screeners("most_actives", count= 25)
-    collectStockData(collectedData)
+    return collectStockData(collectedData)
     
 def collectStockData(data):
     most_actives = data.get("most_actives", {})
@@ -23,5 +23,6 @@ def collectStockData(data):
         
         stockObject= stockUnit(stockId, ticker, currentPrice, openPrice, closePrice, change, mCap, fiftyDayAverage)
         stockList.append(stockObject)
+
         
     return stockList

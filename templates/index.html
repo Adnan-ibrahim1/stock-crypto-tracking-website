@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+			<title>Hyperspace by HTML5 UP</title>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+			<link rel="stylesheet" href="/static/css/main.css" />
+			<noscript><link rel="stylesheet" href="/static/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#one">Who we are</a></li>
+							<li><a href="#two">What we do</a></li>
+							<li><a href="#three">Get in touch</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>Hyperspace</h1>
+							<p>  Your basic Financial advisor. Our  platform monitors and provides real-time 
+								updates on the prices and movements of various financial assets, such as stocks, cryptocurrencies, 
+								commodities, and indices. It allows users to track the performance of their investments, 
+								follow market trends, and make informed trading decisions. We display key information 
+								such as current prices, price changes, trading volumes market capitalization, 
+								and historical data. We also offer additional features like news feeds, alerts, technical analysis tools, 
+								and portfolio management options, helping you stay informed and react quickly to market 
+								changes.</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+							<a href="#" class="image"><img src="/images/pic01.jpg" alt="" data-position="center center" /></a>
+							<div class="content">
+								<div class="inner">
+									<h2>General Knowledge</h2>
+									<p>  Stocks represent ownership in a company. 
+										When you buy a stock, you're purchasing a share of that company, making you a part-owner. 
+										Stocks are traded on exchanges like the New York Stock Exchange (NYSE) or NASDAQ,
+										where their prices fluctuate based on supply and demand, company performance, 
+										and broader economic factors. Investors buy stocks hoping they will increase in value,
+										allowing them to sell at a profit, or to earn dividends—payments
+										made to shareholders from the company’s earnings. Stocks are generally seen as long-term 
+										investments and are a core component of many investment portfolios due to their potential
+										for growth over time.</p>
+
+									<p>  Cryptocurrencies, on the other hand, are digital or virtual currencies that use cryptography for security.
+									    Unlike stocks, which represent ownership in a company, cryptocurrencies are decentralized and often based 
+										on blockchain technology—a distributed ledger that records all transactions across a network of computers.
+										Bitcoin, created in 2009, was the first and is still the most well-known cryptocurrency, but thousands of others,
+										like Ethereum and Ripple, have since emerged. Cryptocurrencies are highly volatile, with prices influenced by factors 
+										like market demand, technological advancements, regulatory news, and investor sentiment. Unlike traditional stocks, 
+										they are not tied to the performance of a particular company but to the perceived value of the underlying technology 
+										or utility.</p>
+									<ul class="actions">
+										<li><a href="/generic.html" class="button">Learn more</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<!-- Latest News & Analysis -->
+						<section id="news-analysis" class="wrapper style1 fade-up">
+							<a href="#" class="image"><img src="/images/pic02.jpg" alt="" data-position="top center" /></a>
+							<div class="content">
+								<h2>Latest News & Analysis</h2>
+								<div class="news-articles">
+									<article>
+										<h3>Stock Market Update</h3>
+										<p>Stay updated with the latest news in the stock market. [Link to full article]</p>
+									</article>
+									<article>
+										<h3>Crypto Trends</h3>
+										<p>Explore the latest trends and analysis in the world of cryptocurrency. [Link to full article]</p>
+									</article>
+								</div>
+								<ul class="actions">
+									<li><a href="#one" class="button scrolly">Learn more</a></li>
+								</ul>
+							</div>
+						</section>
+
+						<!-- Market Overview -->
+						<section id="market-overview" class="wrapper style3 fade-up">
+							<a href="#" class="image"><img src="/images/pic03.jpg" alt="" data-position="top center" /></a>
+							<div class="content">
+								<h2>Market Overview</h2>
+								<div class="market-summary">
+									<div class="stock-summary">
+										<h3>Major Indices</h3>
+										<p>S&P 500: 4,500.32 (+1.2%)<br />
+										NASDAQ: 14,230.45 (+1.8%)<br />
+										Dow Jones: 34,021.68 (+0.9%)</p>
+									</div>
+									<div class="crypto-summary">
+										<h3>Top Cryptocurrencies</h3>
+										<p>Bitcoin: $45,000.50 (+2.3%)<br />
+										Ethereum: $3,200.75 (+1.7%)<br />
+										Ripple: $1.20 (+4.5%)</p>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><a href="#one" class="button scrolly">Learn more</a></li>
+								</ul>
+							</div>
+						</section>
+					</section>
+				<!-- Two -->
+				<section id="two" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h2>What we do</h2>
+						<p>Get the latest information on stocks and cryptocurrencies.</p>
+						<div class="features">
+
+							<!-- Loop through stocks -->
+							{% if stockInfo %}
+								{% for stock in stockInfo %}
+									<section>
+										<span class="icon solid major fa-coins"></span>
+										<h3>{{ stock.ticker }}</h3>
+										<p>
+											Stock ID: {{ stock.stockId }}<br>
+											Current Price: ${{ stock.currentPrice }}<br>
+											Open Price: ${{ stock.openPrice }}<br>
+											Close Price: ${{ stock.closePrice }}<br>
+											Change: {{ stock.change }}<br>
+											Market Cap: {{ stock.mCap }}<br>
+											50-Day Average: ${{ stock.fiftyDayAverage }}<br>
+										</p>
+									</section>
+								{% endfor %}
+							{% else %}
+								<p>No stock data.</p>
+							{% endif %}
+
+							<!-- Loop through cryptocurrencies -->
+							{% if cryptoInfo %}
+								{% for crypto in cryptoInfo %}
+								<section>
+									<span class="icon solid major fa-coins"></span>
+									<h3>{{ crypto.coinId }}</h3>
+									<p>
+										Symbol: {{ crypto.symbol }}<br>
+										Current Price: {{ crypto.currentPrice }}<br>
+										Low (24h): {{ crypto.low24 }}<br>
+										High (24h): {{ crypto.high24 }}<br>
+										Change (24h): {{ crypto.fluct }}<br>
+										Circulating Supply: {{ crypto.circSupp }}<br>
+										Market Cap: {{ crypto.mCap }}<br>
+										Last Updated: {{ crypto.updateDate }}<br>
+										Market Cap Rank: {{ crypto.marketCapRank }}
+									</p>
+								</section>
+								{% endfor %}
+							{% else %}
+								<p>No crypto data available.</p>
+							{% endif %}
+
+						</div>
+						<ul class="actions">
+							<li><a href="/generic.html" class="button">Learn more</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Three -->
+					<section id="three" class="wrapper style1 fade-up">
+						<div class="inner">
+							<h2>Get in touch</h2>
+							<p>For any trading inquiries, please fill out the inquiry form or reach out to us through one of the following methods.</p>
+							<div class="split style1">
+								<section>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="name">Name</label>
+												<input type="text" name="name" id="name" />
+											</div>
+											<div class="field half">
+												<label for="email">Email</label>
+												<input type="text" name="email" id="email" />
+											</div>
+											<div class="field">
+												<label for="message">Message</label>
+												<textarea name="message" id="message" rows="5"></textarea>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><a href="" class="button submit">Send Message</a></li>
+										</ul>
+									</form>
+								</section>
+								<section>
+									<ul class="contact">
+										<li>
+											<h3>Address</h3>
+											<span>12345 Somewhere Road #654<br />
+											Leipzig<br />
+											Germany</span>
+										</li>
+										<li>
+											<h3>Email</h3>
+											<a href="#">user@lancaster.ac.uk</a>
+										</li>
+										<li>
+											<h3>Phone</h3>
+											<span>(000) 000-0000</span>
+										</li>
+										<li>
+											<h3>Social</h3>
+											<ul class="icons">
+												<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+												<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+												<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+												<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+												<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+											</ul>
+										</li>
+									</ul>
+								</section>
+							</div>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy;All rights reserved.</li><li>Design: AJ </a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="/static/js/jquery.min.js"></script>
+			<script src="/static/js/jquery.scrollex.min.js"></script>
+			<script src="/static/js/jquery.scrolly.min.js"></script>
+			<script src="/static/js/browser.min.js"></script>
+			<script src="/static/js/breakpoints.min.js"></script>
+			<script src="/static/js/util.js"></script>
+			<script src="/static/js/main.js"></script>
+
+	</body>
+</html>
