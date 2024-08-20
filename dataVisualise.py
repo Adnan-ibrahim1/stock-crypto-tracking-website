@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import yfinance as yf
 import getStockData as gsd
-from datetime import datetime
 
 def getData():
     stockList= gsd.startCollectStock()
