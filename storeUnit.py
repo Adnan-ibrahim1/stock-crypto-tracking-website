@@ -5,17 +5,21 @@ class stockUnit:
                 currentPrice, 
                 openPrice, 
                 closePrice, 
+                regularMarketPreviousClose,
                 change, 
                 mCap, 
-                fiftyDayAverage):
-        self.stockId = stockId
-        self.ticker = ticker
-        self.currentPrice = currentPrice
-        self.openPrice = openPrice
-        self.closePrice = closePrice
-        self.change = change
-        self.mCap = mCap
-        self.fiftyDayAverage = fiftyDayAverage
+                fiftyDayAverage,
+                dayLow):
+        self.stockId= stockId
+        self.ticker= ticker
+        self.currentPrice= currentPrice
+        self.regularMarketPreviousClose= regularMarketPreviousClose,
+        self.openPrice= openPrice
+        self.closePrice= closePrice
+        self.change= change
+        self.mCap= mCap
+        self.fiftyDayAverage= fiftyDayAverage
+        self.dayLow= dayLow
     
     def __str__(self):
         return (
@@ -24,6 +28,8 @@ class stockUnit:
             f"Current Price: {self.currentPrice}, "
             f"Market Open Price: {self.openPrice}, "
             f"Market Close Price: {self.closePrice}, "
+            f"Previous Day Close: {self.regularMarketPreviousClose}, "
+            f"Market Day Low: {self.dayLow}, "
             f"Change Percent: {self.change}%, "
             f"Market Cap: {self.mCap}, "
             f"Fifty Day Average: {self.fiftyDayAverage}, "
