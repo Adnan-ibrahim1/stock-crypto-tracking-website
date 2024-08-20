@@ -26,3 +26,4 @@ def collectStockData(data):
 
         
     return stockList
+
