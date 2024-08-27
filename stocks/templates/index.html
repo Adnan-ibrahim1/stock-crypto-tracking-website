@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Stock and Crypto Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <noscript><link rel="stylesheet" href="/static/css/noscript.css" /></noscript>
+    <style>
+        /* Add your custom styles here */
+        .data-container {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .data-container img {
+            max-width: 350px;
+            max-height: 500x;
+            margin-right: 20px;
+        }
+
+        .data-container .info {
+            flex: 1;
+        }
+
+        .data-container .info h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body class="is-preload">
+	<!-- Sidebar -->
+	<section id="sidebar">
+		<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#one">Info+</a></li>
+					<li><a href="#two">Stocks & Crypto</a></li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+<!-- Wrapper -->
+<div id="wrapper">
+	<!-- Market Overview -->
+		<section id="market-overview" class="wrapper style3 fade-up">
+			<a href="#" class="image"><img src="/images/pic03.jpg" alt="" data-position="left" /></a>
+			<div class="content">
+				<h2>Market Overview</h2>
+				<div class="market-summary">
+					<div class="stock-summary">
+						<h3>Major Indices</h3>
+						<p>S&P 500: 4,500.32 (+1.2%)<br />
+						NASDAQ: 14,230.45 (+1.8%)<br />
+						Dow Jones: 34,021.68 (+0.9%)</p>
+					</div>
+					<div class="crypto-summary">
+						<h3>Top Cryptocurrencies</h3>
+						<p>Bitcoin: $45,000.50 (+2.3%)<br />
+						Ethereum: $3,200.75 (+1.7%)<br />
+						Ripple: $1.20 (+4.5%)</p>
+					</div>
+				</div>
+				<ul class="actions">
+					<li><a href="#one" class="button scrolly">Learn more</a></li>
+				</ul>
+			</div>
+		</section>
+	</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style3 fade-up">
+	<div class="inner">
+		<h2><b>Market Overview</b></h2>
+		<p>Top 25 Stocks and Cryto Currencies Overview</p>
+		<div class="features">
+
+			<!-- Loop through stocks -->
+			{% if stockInfo %}
+				{% for stock in stockInfo %}
+					<section>
+						<span class="icon solid major fa-coins"></span>
+						<h3>{{ stock.ticker }}</h3>
+						<p>
+							Stock ID: {{ stock.stockId }}<br>
+							Current Price: ${{ stock.currentPrice }}<br>
+							Open Price: ${{ stock.openPrice }}<br>
+							Close Price: ${{ stock.closePrice }}<br>
+							Change: {{ stock.change }}<br>
+							Market Cap: {{ stock.mCap }}<br>
+							50-Day Average: ${{ stock.fiftyDayAverage }}<br>
+							Market Previous Close: {{stock.regularMarketPreviousClose}}<br>
+							Day Low: {{stock.dayLow}}<br>
+						</p>
+						<div class="data-container">
+							<img src="{{ url_for('static', filename='images/' + graphInfo[loop.index0]) }}" alt="{{ stock.ticker }} plot">
+							</div>
+					</section>
+				{% endfor %}
+			{% else %}
+				<p>No stock data.</p>
+			{% endif %}
+
+			<!-- Loop through cryptocurrencies -->
+			{% if cryptoInfo %}
+				{% for crypto in cryptoInfo %}
+				<section>
+					<span class="icon solid major fa-coins"></span>
+					<h3>{{ crypto.coinId }}</h3>
+					<p>
+						Symbol: {{ crypto.symbol }}<br>
+						Current Price: {{ crypto.currentPrice }}<br>
+						Low (24h): {{ crypto.low24 }}<br>
+						High (24h): {{ crypto.high24 }}<br>
+						Change (24h): {{ crypto.fluct }}<br>
+						Circulating Supply: {{ crypto.circSupp }}<br>
+						Market Cap: {{ crypto.mCap }}<br>
+						Last Updated: {{ crypto.updateDate }}<br>
+						Market Cap Rank: {{ crypto.marketCapRank }}
+					</p>
+				</section>
+				{% endfor %}
+			{% else %}
+				<p>No crypto data available.</p>
+			{% endif %}
+
+		</div>
+		<ul class="actions">
+			<li><a href="/templates/generic.html" class="button">Learn more</a></li>
+		</ul>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+<div class="inner">
+	<ul class="menu">
+		<li>&copy;All rights reserved.</li><li>Design: AJ </a></li>
+	</ul>
+</div>
+</footer>
+
+<!-- Scripts -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.scrollex.min.js"></script>
+<script src="/static/js/jquery.scrolly.min.js"></script>
+<script src="/static/js/browser.min.js"></script>
+<script src="/static/js/breakpoints.min.js"></script>
+<script src="/static/js/util.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>
